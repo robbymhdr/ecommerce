@@ -23,7 +23,29 @@
 
         <div class="row justify-content-center">
             <div class="col-md-12 my-4">
-                <h2 class="text-center">Produk</h2>
+                
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form action="/home" method="get">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Cari Produk" name="search" value="{{request('search')}}">
+                            <button class="btn btn-danger" type="submit">Cari</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+    <div class="col">
+        @if(session('failed'))
+        <div class="alert alert-danger alert-dismissible fade show" >
+            {{ session('failed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+    </div>
+
+
             </div>
             @foreach ($barangs as $barang)
                 <div class="col-md-3 p-2">

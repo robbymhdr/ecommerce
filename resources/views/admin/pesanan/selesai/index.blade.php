@@ -1,11 +1,14 @@
 @extends('layouts.admin')
 @section('content')
     @if ($pesanans->count() > 0)
-        <div class="row">
-            <div class="col-md-12 mt-4">
-                <div class="card">
+     <div class="row">
+         <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-header"><a href="{{ route('exportpesanan') }}" class="btn btn-success">Export</a></div>
                     <div class="table-responsive">
+                        
                         <table class="table table-striped">
+                        
                             <thead>
                                 <tr>
                                     <td>No</td>

@@ -8,6 +8,10 @@ use App\Models\PesananDetail;
 use App\Models\Barang;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\PesananExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 
@@ -32,6 +36,9 @@ class A_PesananController extends Controller
         return view('admin.pesanan.list_pesanan.index', compact('pesanans'), $data);
     }
 
+    public function pesananexport(){
+        return Excel::download(new PesananExport,'Laporan.xlsx');
+    }
 
     public function detail($id)
     {

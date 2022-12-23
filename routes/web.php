@@ -71,7 +71,6 @@ Route::post('admin/profile', [A_ProfileController::class, 'update']);
 // Dashboard
 Route::get('admin/dashboard', [A_DashboardController::class, 'index'])->name('adminDashboard')->middleware('isAdmin');
 
-
 //Pengguna (Admin)
 Route::get('admin/list-admin', [A_PenggunaController::class, 'admin'])->name('admin');;
 Route::get('admin/tambah-admin', [A_PenggunaController::class, 'tambah_admin'])->name('admin');
@@ -111,3 +110,5 @@ Route::get('admin/pesanan-dikirim/{id}', [A_PesananController::class, 'detail_di
 //Pesanan Diterima
 Route::get('admin/pesanan-selesai', [A_PesananController::class, 'selesai'])->name('selesai');
 Route::get('admin/pesanan-selesai/{id}', [A_PesananController::class, 'detail_pesanan'])->name('selesai');
+
+Route::get('/exportpesanan', [A_PesananController::class, 'pesananexport'])->name('exportpesanan');

@@ -24,15 +24,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        
+        if($request->has('search')){
+            $barangs = Barang::where('nama_barang', 'like', '%'. $request->search . '%')->paginate(20);
+            $cek = Barang::where('nama_barang', 'like', '%'. $request->search . '%')->paginate(20)->count();
+        if($cek==0){
+            return back()->with('failed', 'Barang Kosong bitch!');
+        }
+
+        }else{
+            
+            $barangs = Barang::paginate(20);
+        }
+
         $data =
             [
                 'title' => 'Home',
             ];
-
-        $barangs = Barang::paginate(15);
-        // dd($barangs);
+      
         return view('home', compact('barangs'), $data);
     }
 }
